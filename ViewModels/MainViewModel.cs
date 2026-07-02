@@ -9,10 +9,14 @@ namespace NugetMVVP.ViewModels
         [ObservableProperty]
         private object currentView;
 
-        public NavigationViewModel NavigationVM { get;}
-
         public MainViewModel()
         {
+            CurrentView = new LoginViewModel(this);
+        }
+
+        public void LoginSuccessful()
+        {
+            CurrentView = new NavigationViewModel();
         }
 
 

@@ -51,5 +51,41 @@
 
             <TextBlock Style="{StaticResource SearchTextStyle}" Text="Search" />
         </Grid>
+
+        <ItemsControl
+            Width="650"
+            Height="350"
+            Margin="0,40,0,0"
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding TrashSourceCollection}">
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton GroupName="DesktopGroup" Style="{StaticResource GridButtonStyle}">
+
+                        <StackPanel Orientation="Vertical">
+
+                            <Image
+                                Width="40"
+                                Height="40"
+                                Margin="0,0,0,5"
+                                Source="{Binding TrashImage}" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Foreground="#DDDDDD"
+                                Text="{Binding TrashName}" />
+                        </StackPanel>
+
+                    </RadioButton>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3" Rows="3" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 </UserControl>

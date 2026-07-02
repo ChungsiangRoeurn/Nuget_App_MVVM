@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="NugetMVVP.Views.MusicView"
+    x:Class="NugetMVVP.Views.PCView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -26,46 +26,42 @@
             </Style.Triggers>
         </Style>
     </UserControl.Style>
-
     <Grid Background="#303030">
-        <TextBlock
-            Margin="5,12,0,0"
+
+        <RadioButton
+            Width="40"
+            Height="40"
+            Margin="0,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            FontFamily="Segoe UI"
+            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.BackHomeCommand}"
+            Style="{StaticResource HomeButtonStyle}"
+            Tag="Assets/back_icon.png" />
+
+        <TextBlock
+            Margin="50,12,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontFamily="/Fonts/OpenSans-Regular.ttf #Open Sans Regular"
             FontSize="24"
             Foreground="#DDDDDD"
-            Text="Music" />
+            Text="Home  &gt;  This PC" />
 
-        <Grid
-            Width="180"
-            Height="40"
-            Margin="0,10,15,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top">
-            <TextBox
-                x:Name="SearchBox"
-                Style="{StaticResource SearchBoxStyle}"
-                Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
-
-
-            <TextBlock Style="{StaticResource SearchTextStyle}" Text="Search" />
-        </Grid>
 
         <ItemsControl
             Width="650"
-            Height="380"
-            Margin="0,70,0,0"
+            Height="350"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
-            ItemsSource="{Binding MusicSourceCollection}">
+            ItemsSource="{Binding PCSourceCollection}">
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <RadioButton
-                        Content="{Binding MusicName}"
-                        GroupName="DesktopGroup"
-                        Style="{StaticResource MusicButtonStyle}"
-                        Tag="{Binding MusicImage}" />
+                        Content="{Binding PCName}"
+                        GroupName="PCGroup"
+                        Style="{StaticResource GridButtonStyle}"
+                        Tag="{Binding PCImage}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
@@ -75,5 +71,7 @@
             </ItemsControl.ItemsPanel>
 
         </ItemsControl>
+
+
     </Grid>
 </UserControl>

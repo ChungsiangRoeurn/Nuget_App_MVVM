@@ -34,7 +34,6 @@ namespace NugetMVVP.ViewModels
                 new DesktopItems { DesktopName = "Calendar", DesktopImage = "/Assets/calendar_icon.png" }
             };
 
-
             DesktopSourceCollection = new ObservableCollection<DesktopItems>(_allItems);
         }
 

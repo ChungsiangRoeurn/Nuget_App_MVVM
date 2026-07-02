@@ -28,11 +28,12 @@
     </UserControl.Style>
 
     <Grid Background="#303030">
+
         <TextBlock
             Margin="5,12,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            FontFamily="Segoe UI"
+            FontFamily="/Fonts/OpenSans-Regular.ttf #Open Sans Regular"
             FontSize="24"
             Foreground="#DDDDDD"
             Text="Downloads" />
@@ -43,13 +44,40 @@
             Margin="0,10,15,0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top">
+
             <TextBox
                 x:Name="SearchBox"
                 Style="{StaticResource SearchBoxStyle}"
                 Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
 
-
             <TextBlock Style="{StaticResource SearchTextStyle}" Text="Search" />
+
         </Grid>
+
+        <ItemsControl
+            Width="650"
+            Height="285"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding DownloadSourceCollection}">
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton
+                        Content="{Binding DownloadName}"
+                        GroupName="DesktopGroup"
+                        Style="{StaticResource DownloadButtonStyle}"
+                        Tag="{Binding DownloadImage}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" Rows="4" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+        </ItemsControl>
+
+
     </Grid>
 </UserControl>

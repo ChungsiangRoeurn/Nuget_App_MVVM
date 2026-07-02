@@ -25,7 +25,7 @@
             VerticalAlignment="Top"
             Background="#5C5C5C"
             CornerRadius="10, 0, 100,0">
-            <TextBlock Style="{StaticResource HeaderStyle}" Text="W E L C O M E  TO  W I N D O W  A P P L I C A T I O N" />
+            <TextBlock Style="{StaticResource HeaderStyle}" Text="W E L C O M E   T O   W I N D O W   A P P L I C A T I O N" />
         </Border>
 
         <!--  Footer  -->
@@ -37,7 +37,7 @@
             Background="#5C5C5C"
             CornerRadius="100,0,10,0">
 
-            <TextBlock Style="{StaticResource FooterStyle}" Text="D E S I G N   T H E   I N T E R F A C E" />
+            <TextBlock Style="{StaticResource FooterStyle}" Text="C O P Y R I G H T @ 2 0 2 6 , C A M B O D I A N   D E V E L O P E R" />
         </Border>
 
         <!--  Content background  -->
@@ -87,7 +87,7 @@
                 Grid.Column="1"
                 Margin="0,10,0,0">
 
-                <ItemsControl ItemsSource="{Binding SourceCollection}">
+                <ItemsControl ItemsSource="{Binding FilteredSourceCollection}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>

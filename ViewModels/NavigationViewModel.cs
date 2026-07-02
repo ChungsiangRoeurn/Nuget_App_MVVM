@@ -4,13 +4,18 @@ using CommunityToolkit.Mvvm.Input;
 using NugetMVVP.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Data;
 
 namespace NugetMVVP.ViewModels
 {
     public partial class NavigationViewModel : ObservableObject
     {
-       public ObservableCollection<MenuItems> SourceCollection { get; set; }
+        public ObservableCollection<MenuItems> SourceCollection { get; set; }
+
+        [ObservableProperty]
+        private ObservableCollection<MenuItems> filteredSourceCollection;
+
+        [ObservableProperty]
+        private string filterText;
 
         [ObservableProperty]
         private object selectedViewModel;
@@ -29,7 +34,8 @@ namespace NugetMVVP.ViewModels
                 new MenuItems { MenuName = "Trash", MenuImage = "/Assets/Trash_Icon.png" }
             };
 
-            // optional default page
+            FilteredSourceCollection = new ObservableCollection<MenuItems>(SourceCollection);
+
             SelectedViewModel = new HomeViewModel();
         }
 
@@ -50,9 +56,31 @@ namespace NugetMVVP.ViewModels
             };
         }
 
+        partial void OnFilterTextChanged(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                FilteredSourceCollection = new ObservableCollection<MenuItems>(SourceCollection);
+                return;
+            }
+
+            var filtered = SourceCollection
+                .Where(x => x.MenuName.Contains(value, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            FilteredSourceCollection = new ObservableCollection<MenuItems>(filtered);
+        }
+
         [RelayCommand]
         private void Exit()
         {
+            var result = MessageBox.Show(
+                "Do you really want to close this app?",
+                "Exit Infomation",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes) 
             Application.Current.Shutdown();
         }
     }

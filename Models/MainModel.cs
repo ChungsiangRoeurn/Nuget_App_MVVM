@@ -64,4 +64,10 @@
         public string MovieImage { get; set; }
     }
 
+    public class TrashItems
+    {
+        public string TrashName { get; set; }
+        public string TrashImage { get; set; }
+    }
+
 }

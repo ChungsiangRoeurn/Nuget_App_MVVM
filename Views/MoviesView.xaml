@@ -51,5 +51,29 @@
 
             <TextBlock Style="{StaticResource SearchTextStyle}" Text="Search" />
         </Grid>
+
+        <ItemsControl
+            Width="650"
+            Height="360"
+            Margin="0,50,0,0"
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding MovieSourceCollection}">
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton
+                        Content="{Binding MovieName}"
+                        GroupName="DesktopGroup"
+                        Style="{StaticResource MovieButtonStyle}"
+                        Tag="{Binding MovieImage}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4" Rows="2" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+        </ItemsControl>
     </Grid>
 </UserControl>
