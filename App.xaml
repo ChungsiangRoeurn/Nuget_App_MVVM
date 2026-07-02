@@ -1,0 +1,54 @@
+﻿<Application
+    x:Class="NugetMVVP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NugetMVVP"
+    xmlns:views="clr-namespace:NugetMVVP.Views"
+    xmlns:vm="clr-namespace:NugetMVVP.ViewModels"
+    StartupUri="Views/MainWindow.xaml">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+                <views:HomeView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:DesktopViewModel}">
+                <views:DesktopView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:DocumentsViewModel}">
+                <views:DocumentView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:DownloadsViewModel}">
+                <views:DownloadsView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:PicturesViewModel}">
+                <views:PicturesView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MusicViewModel}">
+                <views:MusicView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MoviesViewModel}">
+                <views:MoviesView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:TrashViewModel}">
+                <views:TrashView />
+            </DataTemplate>
+
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>
