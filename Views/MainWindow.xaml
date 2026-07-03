@@ -21,10 +21,10 @@
         <Border
             Width="850"
             Height="80"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Background="#5C5C5C"
-            CornerRadius="10, 0, 100,0">
+            CornerRadius="100, 0, 10,0">
             <TextBlock Style="{StaticResource HeaderStyle}" Text="W E L C O M E   T O   W I N D O W   A P P L I C A T I O N" />
         </Border>
 
@@ -32,10 +32,10 @@
         <Border
             Width="850"
             Height="80"
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Background="#5C5C5C"
-            CornerRadius="100,0,10,0">
+            CornerRadius="10,0,100,0">
 
             <TextBlock Style="{StaticResource FooterStyle}" Text="C O P Y R I G H T @ 2 0 2 6 , C A M B O D I A N   D E V E L O P E R" />
         </Border>
@@ -123,8 +123,8 @@
         <Button
             Width="50"
             Height="50"
-            Margin="0,5,20,0"
-            HorizontalAlignment="Right"
+            Margin="20,5,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Command="{Binding ExitCommand}"
             Style="{StaticResource CloseBtn_Style}" />
