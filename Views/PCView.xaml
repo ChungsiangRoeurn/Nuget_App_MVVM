@@ -38,14 +38,62 @@
             Style="{StaticResource HomeButtonStyle}"
             Tag="Assets/back_icon.png" />
 
-        <TextBlock
-            Margin="50,12,0,0"
-            HorizontalAlignment="Left"
+        <StackPanel
+            Margin="5,12,0,0"
             VerticalAlignment="Top"
-            FontFamily="/Fonts/OpenSans-Regular.ttf #Open Sans Regular"
-            FontSize="24"
-            Foreground="#DDDDDD"
-            Text="Home  &gt;  This PC" />
+            Orientation="Horizontal">
+
+            <Button
+                Padding="0"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Command="{Binding DataContext.BackHomeCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.7" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="24"
+                    Foreground="#DDDDDD"
+                    Text="Home" />
+            </Button>
+
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="24"
+                Foreground="#AAAAAA"
+                Text="  &gt;  " />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="22"
+                Foreground="#DDDDDD"
+                Text="This PC" />
+
+        </StackPanel>
 
 
         <ItemsControl
@@ -57,11 +105,23 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton
-                        Content="{Binding PCName}"
-                        GroupName="PCGroup"
-                        Style="{StaticResource GridButtonStyle}"
-                        Tag="{Binding PCImage}" />
+                    <RadioButton GroupName="PCGroup" Style="{StaticResource GridButtonStyle}">
+
+                        <StackPanel HorizontalAlignment="Center">
+
+                            <Image
+                                Width="40"
+                                Height="40"
+                                Source="{Binding PCImage}" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Foreground="White"
+                                Text="{Binding PCName}" />
+
+                        </StackPanel>
+
+                    </RadioButton>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
@@ -71,7 +131,5 @@
             </ItemsControl.ItemsPanel>
 
         </ItemsControl>
-
-
     </Grid>
 </UserControl>

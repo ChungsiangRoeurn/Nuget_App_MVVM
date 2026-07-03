@@ -7,15 +7,22 @@ namespace NugetMVVP.ViewModels
 {
     public partial class HomeViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private string pageTitle = "Home";
+
         public ObservableCollection<HomeItems> HomeSourceCollection { get; }
+        
+        private readonly NavigationViewModel _nav;
 
         public IRelayCommand<string> ThisPCCommand { get; }
-        public HomeViewModel()
+        public HomeViewModel(NavigationViewModel nav)
         {
+            _nav = nav;
+
             HomeSourceCollection = new ObservableCollection<HomeItems>
-           {
+            {
                new HomeItems { HomeName = "This PC", HomeImage = "/Assets/pc_icon.png" },
-           };
+            };
 
             ThisPCCommand = new RelayCommand<string>((name) =>
             {
@@ -23,9 +30,10 @@ namespace NugetMVVP.ViewModels
             });
         }
 
-        private void OpenItem(string? obj)
+        [RelayCommand]
+        private void OpenThisPC()
         {
-            throw new NotImplementedException();
+            _nav.SelectedViewModel = new PCViewModel(_nav);
         }
     }
 }

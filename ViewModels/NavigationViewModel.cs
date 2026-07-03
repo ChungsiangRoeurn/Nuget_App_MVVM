@@ -17,11 +17,16 @@ namespace NugetMVVP.ViewModels
         [ObservableProperty]
         private string filterText;
 
+        private readonly HomeViewModel _homeVM;
+
         [ObservableProperty]
         private object selectedViewModel;
 
         public NavigationViewModel()
         {
+
+            _homeVM = new HomeViewModel(this);
+
             SourceCollection = new ObservableCollection<MenuItems>
             {
                 new MenuItems { MenuName = "Home", MenuImage = "/Assets/Home_Icon.png" },
@@ -36,7 +41,7 @@ namespace NugetMVVP.ViewModels
 
             FilteredSourceCollection = new ObservableCollection<MenuItems>(SourceCollection);
 
-            SelectedViewModel = new HomeViewModel();
+            SelectedViewModel = _homeVM;
         }
 
         [RelayCommand]
@@ -44,15 +49,15 @@ namespace NugetMVVP.ViewModels
         {
             SelectedViewModel = menuName switch
             {
-                "Home" => new HomeViewModel(),
-                "Desktop" => new DesktopViewModel(),
-                "Documents" => new DocumentsViewModel(),
-                "Downloads" => new DownloadsViewModel(),
-                "Pictures" => new PicturesViewModel(),
-                "Music" => new MusicViewModel(),
-                "Movies" => new MoviesViewModel(),
-                "Trash" => new TrashViewModel(),
-                _ => new HomeViewModel()
+                "Home"          => new HomeViewModel(this),
+                "Desktop"       => new DesktopViewModel(),
+                "Documents"     => new DocumentsViewModel(),
+                "Downloads"     => new DownloadsViewModel(),
+                "Pictures"      => new PicturesViewModel(),
+                "Music"         => new MusicViewModel(),
+                "Movies"        => new MoviesViewModel(),
+                "Trash"         => new TrashViewModel(),
+                _               => new HomeViewModel(this)
             };
         }
 
@@ -69,6 +74,12 @@ namespace NugetMVVP.ViewModels
                 .ToList();
 
             FilteredSourceCollection = new ObservableCollection<MenuItems>(filtered);
+        }
+
+        [RelayCommand]
+        private void BackHome()
+        {
+            SelectedViewModel = _homeVM;
         }
 
         [RelayCommand]

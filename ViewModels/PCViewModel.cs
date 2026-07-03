@@ -30,11 +30,5 @@ namespace NugetMVVP.ViewModels
 
             PCSourceCollection = new ObservableCollection<PCItems>(_allItems);
         }
-
-        [RelayCommand]
-        private void BackHome()
-        {
-            Console.WriteLine("Back to Home clicked");
-        }
     }
 }

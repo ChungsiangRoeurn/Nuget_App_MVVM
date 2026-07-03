@@ -10,10 +10,6 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <UserControl.DataContext>
-        <vm:HomeViewModel />
-    </UserControl.DataContext>
-
 
     <UserControl.Style>
         <Style>
@@ -42,7 +38,7 @@
             FontFamily="Segoe UI"
             FontSize="24"
             Foreground="#DDDDDD"
-            Text="Home" />
+            Text="{Binding PageTitle}" />
 
         <ItemsControl
             Width="650"
@@ -54,8 +50,7 @@
                 <DataTemplate>
 
                     <RadioButton
-                        Command="{Binding DataContext.ThisPCCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                        CommandParameter="{Binding HomeName}"
+                        Command="{Binding DataContext.OpenThisPCCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         GroupName="HomeGroup"
                         Style="{StaticResource GridButtonStyle}">
 
