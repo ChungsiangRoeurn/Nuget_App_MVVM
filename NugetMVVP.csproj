@@ -37,6 +37,7 @@
     <None Remove="Assets\html_icon.png" />
     <None Remove="Assets\invoice_icon.png" />
     <None Remove="Assets\javascript_icon.png" />
+    <None Remove="Assets\MinusIcon.png" />
     <None Remove="Assets\Movies_Icon.png" />
     <None Remove="Assets\movie_icon.png" />
     <None Remove="Assets\musical_icon.png" />
@@ -159,6 +160,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\javascript_icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\MinusIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Movies_Icon.png">

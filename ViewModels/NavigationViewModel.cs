@@ -94,5 +94,11 @@ namespace NugetMVVP.ViewModels
             if (result == MessageBoxResult.Yes) 
             Application.Current.Shutdown();
         }
+
+        [RelayCommand]
+        private void Minimize()
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
     }
 }
