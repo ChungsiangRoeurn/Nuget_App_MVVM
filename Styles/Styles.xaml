@@ -65,6 +65,46 @@
         </Setter>
     </Style>
 
+    <ImageBrush
+        x:Key="minus_img"
+        ImageSource="/Assets/MinusIcon.png"
+        Stretch="None" />
+
+    <Style x:Key="MinusBtn_Style" TargetType="Button">
+
+        <Setter Property="Background" Value="{StaticResource minus_img}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border x:Name="border" Background="{TemplateBinding Background}">
+
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource minus_img}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource minus_img}" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="SearchBoxStyle" TargetType="{x:Type TextBox}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Width" Value="180" />
